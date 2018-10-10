@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Rating;
 
 class RatingsTableSeeder extends Seeder
 {
@@ -11,6 +12,6 @@ class RatingsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Rating::class,10)->create();
     }
 }

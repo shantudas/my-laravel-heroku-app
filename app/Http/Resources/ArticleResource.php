@@ -20,6 +20,8 @@ class ArticleResource extends JsonResource
             'body' => $this->body,
             'published_at' => (String)$this->created_at,
             'published_by' => $this->user->name,
+            'avg_rating' => $this->ratings->avg('rating'),
+            'ratings'=>ArticleWithRating::collection($this->ratings)
         ];
     }
 }

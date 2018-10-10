@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             [
                 UsersTableSeeder::class,
                 ArticlesTableSeeder::class,
+                RatingsTableSeeder::class,
             ]
         );
     }
