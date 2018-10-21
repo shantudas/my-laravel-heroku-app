@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Http\Resources\ArticleDetailsResource;
 use App\Http\Resources\ArticleResource;
 use Illuminate\Http\Request;
 
@@ -17,5 +18,11 @@ class ArticleController extends Controller
     {
         $articles = Article::paginate(5);
         return ArticleResource::collection($articles);
+    }
+
+    public function show($id)
+    {
+        $article = Article::find($id);
+        return new ArticleDetailsResource($article);
     }
 }

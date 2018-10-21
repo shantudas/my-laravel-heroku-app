@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ArticleResource extends JsonResource
+class ArticleDetailsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -20,6 +20,8 @@ class ArticleResource extends JsonResource
             'body' => $this->body,
             'published_at' => (String)$this->created_at,
             'published_by' => $this->user->name,
+            'avg_rating' => $this->ratings->avg('rating'),
+            'ratings' => ArticleWithRating::collection($this->ratings)
         ];
     }
 }

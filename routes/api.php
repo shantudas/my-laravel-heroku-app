@@ -18,5 +18,6 @@ Route::group([
 
 
     Route::post('articles', 'ArticleController@index');
+    Route::post('articles/{article_id}', 'ArticleController@show');
 
 });
