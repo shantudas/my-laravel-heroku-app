@@ -2,6 +2,11 @@
 
 use Illuminate\Http\Request;
 
+Route::get('/', function () {
+    return response('Welcome to article api', 200)
+        ->header('Content-Type', 'text/plain');
+});
+
 
 Route::group([
 
