@@ -25,4 +25,16 @@ class ArticleController extends Controller
         $article = Article::find($id);
         return new ArticleDetailsResource($article);
     }
+
+    public function store(Request $request)
+    {
+        $article = Article::create([
+            'user_id' => $request->user_id,
+            'title' => $request->title,
+            'body' => $request->body,
+        ]);
+
+        return new ArticleDetailsResource($article);
+    }
+
 }

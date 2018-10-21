@@ -13,6 +13,8 @@ class Article extends Model
      */
     protected $table = 'articles';
 
+    protected $fillable = ['user_id', 'title', 'body'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -21,4 +23,6 @@ class Article extends Model
     public function ratings(){
         return $this->hasMany(Rating::class);
     }
+
+
 }
