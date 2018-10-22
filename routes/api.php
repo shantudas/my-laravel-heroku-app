@@ -7,6 +7,10 @@ Route::get('/', function () {
         ->header('Content-Type', 'text/plain');
 });
 
+Route::get('/users', function () {
+    return \App\User::all();
+});
+
 
 Route::group([
 
