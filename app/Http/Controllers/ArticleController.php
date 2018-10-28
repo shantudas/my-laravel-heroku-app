@@ -29,7 +29,7 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $article = Article::create([
-            'user_id' => $request->user_id,
+            'user_id' => $request->user()->id,
             'title' => $request->title,
             'body' => $request->body,
         ]);
