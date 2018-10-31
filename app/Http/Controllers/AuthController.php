@@ -26,8 +26,10 @@ class AuthController extends Controller
     public function login()
     {
         $credentials = request(['email', 'password']);
+        $token = auth()->attempt($credentials);
+        var_dump($token);
 
-        try {
+        /*try {
             if (!$token = auth()->attempt($credentials)) {
                 return response()->json(['error' => 'Unauthorized'], 401);
             }
@@ -37,7 +39,7 @@ class AuthController extends Controller
                 'error_message' => $exception
             ], 500);
         }
-        return $this->respondWithToken($token);
+        return $this->respondWithToken($token);*/
     }
 
     /**
