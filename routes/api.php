@@ -7,6 +7,17 @@ Route::get('/', function () {
         ->header('Content-Type', 'text/plain');
 });
 
+
+
+Route::get('location', 'LocationController@index');
+Route::post('location/store', 'LocationController@store');
+
+//Route::apiResource('locations', 'LocationController');
+
+
+
+
+
 Route::get('/users', function () {
     return \App\User::all();
 });
@@ -29,6 +40,8 @@ Route::group([
     Route::post('articles', 'ArticleController@index');
     Route::post('articles/{article_id}', 'ArticleController@show');
     Route::post('article/store', 'ArticleController@store');
+
+   
 
 
 });
