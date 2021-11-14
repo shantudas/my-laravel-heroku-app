@@ -7,6 +7,12 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class LocationResource extends JsonResource
 {
     /**
+     * The "data" wrapper that should be applied.
+     *
+     * @var string
+     */
+    public static $wrap = 'data';
+    /**
      * Transform the resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -14,6 +20,13 @@ class LocationResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id'=> $this->id,
+            'track_id'=> $this->track_id,
+            'latitude'=> $this->latitude,
+            'longitude'=> $this->longitude,
+            'accuracy'=> $this->accuracy,
+            'spped'=> $this->speed,
+        ];
     }
 }

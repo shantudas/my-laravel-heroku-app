@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return response('Welcome to article api', 200)
@@ -9,10 +10,12 @@ Route::get('/', function () {
 
 
 
-Route::get('location', 'LocationController@index');
-Route::post('location/store', 'LocationController@store');
+/*Route::get('location', 'LocationController@index');
+Route::post('location/store', 'LocationController@store');*/
 
-//Route::apiResource('locations', 'LocationController');
+Route::apiResource('locations', 'LocationController');
+Route::post('store-locations', 'LocationController@storeLocations');
+
 
 
 
