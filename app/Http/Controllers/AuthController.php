@@ -18,6 +18,19 @@ class AuthController extends Controller
         $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }*/
 
+    public function register(Request $request)
+    {
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+        ]);
+
+        $token = auth()->login($user);
+
+        return $this->respondWithToken($token);
+    }
+
     /**
      * Get a JWT via given credentials.
      *
@@ -26,20 +39,11 @@ class AuthController extends Controller
     public function login()
     {
         $credentials = request(['email', 'password']);
-        $token = auth()->attempt($credentials);
-        var_dump($token);
-
-        /*try {
-            if (!$token = auth()->attempt($credentials)) {
-                return response()->json(['error' => 'Unauthorized'], 401);
-            }
-        } catch (JWTException $exception) {
-            return response()->json([
-                'error' => 'could_not_create_token',
-                'error_message' => $exception
-            ], 500);
-        }
-        return $this->respondWithToken($token);*/
+        if (!$token = auth()->attempt($credentials)) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+          }
+    
+          return $this->respondWithToken($token);
     }
 
     /**
@@ -91,16 +95,5 @@ class AuthController extends Controller
     }
 
 
-    public function register(Request $request)
-    {
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-        ]);
-
-        $token = auth()->login($user);
-
-        return $this->respondWithToken($token);
-    }
+    
 }

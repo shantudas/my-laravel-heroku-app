@@ -9,9 +9,8 @@ Route::get('/', function () {
 });
 
 
-
-/*Route::get('location', 'LocationController@index');
-Route::post('location/store', 'LocationController@store');*/
+Route::post('register', 'AuthController@register');
+Route::post('login', 'AuthController@login');
 
 Route::apiResource('locations', 'LocationController');
 Route::post('store-locations', 'LocationController@storeLocations');
@@ -19,32 +18,22 @@ Route::post('store-locations', 'LocationController@storeLocations');
 
 
 
+// Route::group([
+
+// ], function () {
+
+//     Route::post('login', 'AuthController@login');
+//     Route::post('register', 'AuthController@register');
+//     Route::post('logout', 'AuthController@logout');
+//     Route::post('refresh', 'AuthController@refresh');
+//     Route::post('me', 'AuthController@me');
 
 
-Route::get('/users', function () {
-    return \App\User::all();
-});
-
-
-Route::group([
-
-//    'middleware' => 'api',
-//    'prefix' => 'auth'
-
-], function () {
-
-    Route::post('login', 'AuthController@login');
-    Route::post('register', 'AuthController@register');
-    Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
-
-
-    Route::post('articles', 'ArticleController@index');
-    Route::post('articles/{article_id}', 'ArticleController@show');
-    Route::post('article/store', 'ArticleController@store');
+//     Route::post('articles', 'ArticleController@index');
+//     Route::post('articles/{article_id}', 'ArticleController@show');
+//     Route::post('article/store', 'ArticleController@store');
 
    
 
 
-});
+// });
