@@ -26,7 +26,8 @@ class LocationResource extends JsonResource
             'latitude'=> $this->latitude,
             'longitude'=> $this->longitude,
             'accuracy'=> $this->accuracy,
-            'spped'=> $this->speed,
+            'speed'=> $this->speed,
+            'time_stamps'=> $this->time_stamps,
         ];
     }
 }
