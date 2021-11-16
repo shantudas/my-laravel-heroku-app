@@ -49,6 +49,19 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+
+
+    public function onlineTracks()
+    {
+        return $this->hasMany(UserOnlineTrack::class);
+    }
+
+    public function onlineCoordinates()
+    {
+        return $this->hasMany(UserCoordinate::class);
+    }
+
+
     public function articles(){
         return $this->hasMany(Article::class);
     }
