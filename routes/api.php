@@ -11,29 +11,9 @@ Route::get('/', function () {
 
 Route::post('register', 'AuthController@register');
 Route::post('login', 'AuthController@login');
+Route::post('me', 'AuthController@me');
 
 Route::apiResource('locations', 'LocationController');
 Route::post('store-locations', 'LocationController@storeLocations');
 
-
-
-
-// Route::group([
-
-// ], function () {
-
-//     Route::post('login', 'AuthController@login');
-//     Route::post('register', 'AuthController@register');
-//     Route::post('logout', 'AuthController@logout');
-//     Route::post('refresh', 'AuthController@refresh');
-//     Route::post('me', 'AuthController@me');
-
-
-//     Route::post('articles', 'ArticleController@index');
-//     Route::post('articles/{article_id}', 'ArticleController@show');
-//     Route::post('article/store', 'ArticleController@store');
-
-   
-
-
-// });
+Route::apiResource('articles', 'ArticleController');
