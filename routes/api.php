@@ -10,7 +10,7 @@ Route::get('/', function () {
 
 
 Route::post('register', 'AuthController@register');
-Route::post('login', 'AuthController@login');
+Route::post('login', 'AuthController@login')->name('login');
 Route::post('me', 'AuthController@me');
 
 
