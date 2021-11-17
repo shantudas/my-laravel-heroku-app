@@ -15,6 +15,7 @@ Route::post('me', 'AuthController@me');
 
 
 //online api
+//Route::post('user-online','OnlineController@updateOnlineState');
 Route::group(['prefix'=>'user','as'=>'user.'], function(){
     Route::post('/online', ['as' => 'online', 'uses' => 'OnlineController@updateOnlineState']);
 });
