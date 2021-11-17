@@ -14,4 +14,9 @@ class UserCoordinate extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function onlineTrack()
+    {
+        return $this->belongsTo(UserOnlineTrack::class);
+    }
 }

@@ -16,7 +16,7 @@ class CreateUserCoordinates extends Migration
         Schema::create('user_coordinates', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->String('track_id');
+            $table->integer('user_online_track_id');
             $table->double('latitude');
             $table->double('longitude');
             $table->float('accuracy');

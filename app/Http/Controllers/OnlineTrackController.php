@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Support\Facades\Log;
 
-class OnlineController extends Controller
+class OnlineTrackController extends Controller
 {
     public function __construct()
     {
@@ -18,9 +18,7 @@ class OnlineController extends Controller
 
     public function updateOnlineState(Request $request)
     {
-    
-        $id=$request->user()->id;
-        $user = User::find($id);
+        $user=$request->user();
         $onlineState = $request->online;
 
         if ($onlineState == 1) {
@@ -48,6 +46,7 @@ class OnlineController extends Controller
 
         return response()->json(
             [
+                'track_id'=> $userOnlineTrack->id,
                 'message' => $message
             ]
         );

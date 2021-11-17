@@ -4,16 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\LocationCollection;
 use Illuminate\Http\Request;
-use App\Location;
+use App\UserCoordinate;
 use App\Http\Resources\LocationResource;
 
 class LocationController extends Controller
 {
     public function __construct()
     {
-      $this->middleware('auth:api');
+        $this->middleware('auth:api');
     }
-    
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +20,7 @@ class LocationController extends Controller
      */
     public function index()
     {
-        $locattions = Location::paginate(5);
+        $locattions = UserCoordinate::paginate(5);
         return new LocationCollection($locattions);
     }
 
@@ -33,8 +32,12 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        $location = new Location();
-        $location->track_id = $request['track_id'];
+        // return $request;
+        $user=$request->user();
+
+        $location = new UserCoordinate();
+        $location->user_id = $user->id;
+        $location->user_online_track_id = $request['track_id'];
         $location->latitude = $request['latitude'];
         $location->longitude = $request['longitude'];
         $location->speed = $request['speed'];
@@ -44,7 +47,7 @@ class LocationController extends Controller
 
         return response()->json(
             [
-                'message' => 'locations added successfully'
+                'message' => 'coordinate added successfully'
             ]
         );
     }
@@ -55,7 +58,7 @@ class LocationController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Location $location)
+    public function show(UserCoordinate $location)
     {
         return new LocationResource($location);
     }
@@ -85,10 +88,12 @@ class LocationController extends Controller
 
     public function storeLocations(Request $request)
     {
+        $user=$request->user();
         $data = $request->input();
         //echo "<pre>";print_r($data);
         foreach ($data['locations'] as $key => $value) {
-            $location = new Location();
+            $location = new UserCoordinate();
+            $location->user_id = $user->id;
             $location->track_id = $value['track_id'];
             $location->latitude = $value['latitude'];
             $location->longitude = $value['longitude'];

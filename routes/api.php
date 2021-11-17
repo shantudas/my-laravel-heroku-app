@@ -14,15 +14,15 @@ Route::post('login', 'AuthController@login');
 Route::post('me', 'AuthController@me');
 
 
-//online api
-//Route::post('user-online','OnlineController@updateOnlineState');
-Route::group(['prefix'=>'user','as'=>'user.'], function(){
-    Route::post('/online', ['as' => 'online', 'uses' => 'OnlineController@updateOnlineState']);
+// user apis
+Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
+    Route::post('/online', ['as' => 'online', 'uses' => 'OnlineTrackController@updateOnlineState']);
+    Route::apiResource('/locations', 'LocationController');
+    Route::post('/store-locations', 'LocationController@storeLocations');
 });
 
 
 
-Route::apiResource('locations', 'LocationController');
-Route::post('store-locations', 'LocationController@storeLocations');
+
 
 Route::apiResource('articles', 'ArticleController');
