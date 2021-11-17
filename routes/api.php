@@ -8,18 +8,30 @@ Route::get('/', function () {
         ->header('Content-Type', 'text/plain');
 });
 
+// Route::post('register', 'AuthController@register');
+// Route::post('login', 'AuthController@login');
+// Route::post('logout', 'AuthController@logout');
+// Route::post('refresh', 'AuthController@refresh');
+// Route::post('me', 'AuthController@me');
+
+
+
 
 Route::post('register', 'AuthController@register');
-Route::post('login', 'AuthController@login')->name('login');
-Route::post('me', 'AuthController@me');
+Route::post('login', 'AuthController@authenticate');
+
+Route::group(['middleware' => ['jwt.verify']], function () {
+    Route::get('user', 'AuthController@getAuthenticatedUser');
+    Route::post('user/online', 'OnlineTrackController@updateOnlineState');
+    Route::apiResource('user/locations', 'LocationController');
+    Route::post('user/store-locations', 'LocationController@storeLocations');
+});
 
 
 // user apis
 
-Route::post('user/info', 'UserController@show');
-Route::post('user/online', 'OnlineTrackController@updateOnlineState');
-Route::apiResource('user/locations', 'LocationController');
-Route::post('user/store-locations', 'LocationController@storeLocations');
+
+
 
 
 Route::apiResource('articles', 'ArticleController');

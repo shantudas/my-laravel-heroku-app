@@ -9,10 +9,6 @@ use App\Http\Resources\LocationResource;
 
 class LocationController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:api');
-    }
     /**
      * Display a listing of the resource.
      *

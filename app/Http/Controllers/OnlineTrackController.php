@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Log;
 
 class OnlineTrackController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:api');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth:api');
+    // }
 
     public function updateOnlineState(Request $request)
     {
