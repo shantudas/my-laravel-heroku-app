@@ -23,14 +23,19 @@ Route::post('login', 'AuthController@authenticate');
 Route::group(['middleware' => ['auth.jwt']], function () {
     Route::get('user', 'AuthController@getAuthUser');
     Route::get('logout', 'AuthController@logout');
-    Route::post('user/online', 'OnlineTrackController@updateOnlineState');
-    Route::apiResource('user/locations', 'LocationController');
-    Route::post('user/store-locations', 'LocationController@storeLocations');
+    
+    //online,offline
+    Route::post('user/online', 'OnlineTrackController@updateOnlineState'); //online,offline state 
+    
+    //location
+    Route::get('user/locations', 'LocationController@index');
+    Route::post('user/locations', 'LocationController@store');
+    Route::post('user/store-locations', 'LocationController@storeLocations'); //multiple location update
 });
 
 
-// user apis
 
+//Route::apiResource('user/locations', 'LocationController');
 
 
 
