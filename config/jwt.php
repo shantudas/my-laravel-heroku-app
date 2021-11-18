@@ -57,7 +57,7 @@ return [
         |
         */
 
-        'public' => env('JWT_PUBLIC_KEY'),
+        'public' => env('JWT_PUBLIC_KEY','6abvswCXzpYCmLFIt3YX7TQ5liaZPLOyefCmiMJAiAaXrHaqEXfGP5GOGaoFf2Jx'),
 
         /*
         |--------------------------------------------------------------------------
