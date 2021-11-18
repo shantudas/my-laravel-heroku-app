@@ -13,8 +13,9 @@
         </tr>
     </thead>
     <tbody>
+    @foreach ($users as $user)
         <tr>
-            @foreach ($users as $user)
+           
             <td>{{$user->id}}</td>
             <td>{{$user->name}}</td>
             @if($user->online==1)
@@ -33,8 +34,9 @@
                 </P>
                 @endforeach
             </td>
-            @endforeach
+         
         </tr>
+        @endforeach
     </tbody>
 </table>
 @endsection
