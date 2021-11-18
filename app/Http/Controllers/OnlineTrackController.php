@@ -46,7 +46,7 @@ class OnlineTrackController extends Controller
 
         return response()->json(
             [
-                'online'=>$onlineState,
+                'online'=>$user->online,
                 'track_id'=> $userOnlineTrack->id,
                 'message' => $message
             ]
