@@ -51,13 +51,11 @@ class User extends Authenticatable implements JWTSubject
 
 
 
-    public function onlineTracks()
-    {
+    public function onlineTracks(){
         return $this->hasMany(UserOnlineTrack::class);
     }
 
-    public function onlineCoordinates()
-    {
+    public function onlineCoordinates(){
         return $this->hasMany(UserCoordinate::class);
     }
 
