@@ -25,7 +25,7 @@ return [
     |
     */
 
-    'secret' => env('JWT_SECRET'),
+    'secret' => env('JWT_SECRET','6abvswCXzpYCmLFIt3YX7TQ5liaZPLOyefCmiMJAiAaXrHaqEXfGP5GOGaoFf2Jx'),
 
     /*
     |--------------------------------------------------------------------------
@@ -57,7 +57,7 @@ return [
         |
         */
 
-        'public' => env('JWT_PUBLIC_KEY','6abvswCXzpYCmLFIt3YX7TQ5liaZPLOyefCmiMJAiAaXrHaqEXfGP5GOGaoFf2Jx'),
+        'public' => env('JWT_PUBLIC_KEY'),
 
         /*
         |--------------------------------------------------------------------------
