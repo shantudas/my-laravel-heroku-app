@@ -15,16 +15,18 @@
         </tr>
     </thead>
     <tbody>
+    @foreach ($onlineTracks as $track)
         <tr>
-            @foreach ($onlineTracks as $track)
+           
             <td>{{$track->id}}</td>
             <td>{{$track->latitude}}</td>
             <td>{{$track->longitude}}</td>
             <td>{{$track->speed}}</td>
             <td>{{$track->accuracy}}</td>
             <td>{{$track->created_at}}</td>
-            @endforeach
+          
         </tr>
+        @endforeach
     </tbody>
 </table>
 @endsection
