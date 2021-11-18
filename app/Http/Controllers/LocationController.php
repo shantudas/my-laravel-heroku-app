@@ -104,6 +104,12 @@ class LocationController extends Controller
                 'message' => 'locations added successfully'
             ]
         );
+    }
 
+    public function showAllLocations($id)
+    {
+        # code...
+        $onlineTracks = UserCoordinate::where('user_online_track_id',$id)->get();
+        return $onlineTracks;
     }
 }
