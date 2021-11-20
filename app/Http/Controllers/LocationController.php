@@ -90,7 +90,7 @@ class LocationController extends Controller
         foreach ($data['locations'] as $key => $value) {
             $location = new UserCoordinate();
             $location->user_id = $user->id;
-            $location->track_id = $value['track_id'];
+            $location->user_online_track_id = $value['user_online_track_id'];
             $location->latitude = $value['latitude'];
             $location->longitude = $value['longitude'];
             $location->speed = $value['speed'];
