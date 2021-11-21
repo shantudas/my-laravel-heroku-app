@@ -47,7 +47,7 @@ class CoordinateController extends Controller
      */
     public function show($trackId)
     {
-        $userCoordinates=UserCoordinate::where('user_online_track_id',$trackId)->orderBy('time_stamps','desc')->get();
+        $userCoordinates=UserCoordinate::where('user_online_track_id',$trackId)->orderBy('time_stamps','desc')->paginate(10);
         return view('coordinate')->with('userCoordinates',$userCoordinates);
     }
 
