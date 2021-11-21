@@ -23,7 +23,7 @@
             <td>{{$coordinate->longitude}}</td>
             <td>{{$coordinate->speed}}</td>
             <td>{{$coordinate->accuracy}}</td>
-            <td>{{$coordinate->created_at}}</td>
+            <td>{{ Carbon\Carbon::createFromTimestamp($coordinate->time_stamps)->toDateTimeString() }}</td>
           
         </tr>
         @endforeach
