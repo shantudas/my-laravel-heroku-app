@@ -15,15 +15,15 @@
         </tr>
     </thead>
     <tbody>
-    @foreach ($onlineTracks as $track)
+    @foreach ($userCoordinates as $coordinate)
         <tr>
            
-            <td>{{$track->id}}</td>
-            <td>{{$track->latitude}}</td>
-            <td>{{$track->longitude}}</td>
-            <td>{{$track->speed}}</td>
-            <td>{{$track->accuracy}}</td>
-            <td>{{$track->created_at}}</td>
+            <td>{{$coordinate->id}}</td>
+            <td>{{$coordinate->latitude}}</td>
+            <td>{{$coordinate->longitude}}</td>
+            <td>{{$coordinate->speed}}</td>
+            <td>{{$coordinate->accuracy}}</td>
+            <td>{{$coordinate->created_at}}</td>
           
         </tr>
         @endforeach

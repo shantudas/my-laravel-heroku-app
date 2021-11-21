@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\web;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Http\Controllers\Controller;
 use App\UserCoordinate;
-use App\UserOnlineTrack;
 
-class DashboardController extends Controller
+class CoordinateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $users = User::get();
-        return view('welcome')->with('users', $users);
+        //
     }
 
     /**
@@ -47,10 +45,10 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($trackId)
     {
-        $onlineTracks = UserCoordinate::where('user_online_track_id',$id)->get();
-        return view('coordinate')->with('onlineTracks', $onlineTracks);
+        $userCoordinates=UserCoordinate::where('user_online_track_id',$trackId)->get();
+        return view('coordinate')->with('userCoordinates',$userCoordinates);
     }
 
     /**

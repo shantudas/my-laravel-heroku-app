@@ -17,4 +17,12 @@ Route::get('/', function () {
     return redirect('dashboard');
 });
 
-Route::resource('dashboard','DashboardController');
+Route::resource('dashboard', 'web\DashboardController');
+Route::get('users/{userId}/online-track/{date}', [
+    'as' => 'onlineTrack.show',
+    'uses' => 'web\OnlineTrackController@show'
+]);
+Route::get('users/online-track/{trackId}',[
+    'as' => 'coordinate.show',
+    'uses'=>'web\CoordinateController@show'
+]);
