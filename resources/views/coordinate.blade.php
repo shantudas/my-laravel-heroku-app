@@ -30,4 +30,6 @@
         @endforeach
     </tbody>
 </table>
+
+{{ $userCoordinates->links() }}
 @endsection
