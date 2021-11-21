@@ -17,6 +17,8 @@
     </thead>
     <tbody>
         @foreach ($userCoordinates as $coordinate)
+
+
         <tr>
 
             <td>{{$coordinate->id}}</td>
@@ -24,7 +26,7 @@
             <td>{{$coordinate->longitude}}</td>
             <td>{{$coordinate->speed}}</td>
             <td>{{$coordinate->accuracy}}</td>
-            <td>{{ Carbon\Carbon::createFromTimestamp($coordinate->time_stamps)->toDateTimeString() }}</td>
+            <td>{{$coordinate->time_stamps}},  {{  Carbon\Carbon::createFromTimestamp($coordinate->time_stamps)->toDateTimeString() }}</td>
             <td>{{$coordinate->created_at}}</td>
         </tr>
         @endforeach
