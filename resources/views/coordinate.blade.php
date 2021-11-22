@@ -73,10 +73,10 @@ $sampleArray = array(
         // };
         // var map = new google.maps.Map(document.getElementById("myMap"), mapProp);
         const map = new google.maps.Map(document.getElementById("myMap"), {
-            zoom: 3,
+            zoom: 12,
             center: {
-                lat: 0,
-                lng: -180
+                lat: 23.8103,
+                lng: 90.4125
             },
             mapTypeId: "terrain",
         });
@@ -105,28 +105,23 @@ $sampleArray = array(
                 }
             );
         }
-
-
-
-
-
-        const flightPlanCoordinates2 = [{
-                lat: 37.772,
-                lng: -122.214
-            },
-            {
-                lat: 21.291,
-                lng: -157.821
-            },
-            {
-                lat: -18.142,
-                lng: 178.431
-            },
-            {
-                lat: -27.467,
-                lng: 153.027
-            },
-        ];
+        // const flightPlanCoordinates2 = [{
+        //         lat: 37.772,
+        //         lng: -122.214
+        //     },
+        //     {
+        //         lat: 21.291,
+        //         lng: -157.821
+        //     },
+        //     {
+        //         lat: -18.142,
+        //         lng: 178.431
+        //     },
+        //     {
+        //         lat: -27.467,
+        //         lng: 153.027
+        //     },
+        // ];
         for (var i = 0; i < flightPlanCoordinates.length; i++) {
             console.log("flightPlanCoordinates :: " + flightPlanCoordinates[i].lat);
         }
