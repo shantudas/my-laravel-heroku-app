@@ -6,6 +6,7 @@ use App\Http\Resources\LocationCollection;
 use Illuminate\Http\Request;
 use App\UserCoordinate;
 use App\Http\Resources\LocationResource;
+use App\WorkerInfo;
 
 class LocationController extends Controller
 {
@@ -86,6 +87,7 @@ class LocationController extends Controller
     {
         $user=$request->user();
         $data = $request->input();
+        $workerType=$request->type;
         //echo "<pre>";print_r($data);
         foreach ($data['locations'] as $key => $value) {
             $location = new UserCoordinate();
@@ -98,6 +100,11 @@ class LocationController extends Controller
             $location->time_stamps = $value['time_stamps'];
             $location->save();
         }
+
+        $workerInfo= new WorkerInfo();
+        $workerInfo->type=$workerType;
+        $workerInfo->save();
+
 
         return response()->json(
             [
