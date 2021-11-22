@@ -5,42 +5,54 @@
 <style type="text/css">
     #myMap {
         border: 1px solid red;
-        width: 800px;
+        width: 100%;
         height: 500px;
     }
 </style>
 @endpush
 
 @section('content')
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">latitude</th>
-            <th scope="col">longitude</th>
-            <th scope="col">speed</th>
-            <th scope="col">accuracy</th>
-            <th scope="col">time stamps</th>
-            <th scope="col">Created at</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($userCoordinates as $coordinate)
-        <tr>
-            <td>{{$coordinate->id}}</td>
-            <td>{{$coordinate->latitude}}</td>
-            <td>{{$coordinate->longitude}}</td>
-            <td>{{$coordinate->speed}}</td>
-            <td>{{$coordinate->accuracy}}</td>
-            <td>{{$coordinate->time_stamps}}, {{ Carbon\Carbon::createFromTimestamp($coordinate->time_stamps)->toDateTimeString() }}</td>
-            <td>{{$coordinate->created_at}}</td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+<div class="row">
+    <div class="col-6">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">latitude</th>
+                    <th scope="col">longitude</th>
+                    <th scope="col">speed</th>
+                    <th scope="col">accuracy</th>
+                    <th scope="col">time stamps</th>
+                    <th scope="col">Created at</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($userCoordinates as $coordinate)
+                <tr>
+                    <td>{{$coordinate->id}}</td>
+                    <td>{{$coordinate->latitude}}</td>
+                    <td>{{$coordinate->longitude}}</td>
+                    <td>{{$coordinate->speed}}</td>
+                    <td>{{$coordinate->accuracy}}</td>
+                    <td>{{$coordinate->time_stamps}}, {{ Carbon\Carbon::createFromTimestamp($coordinate->time_stamps)->toDateTimeString() }}</td>
+                    <td>{{$coordinate->created_at}}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+
+    </div>
+    <div class="col-6">
+        <div id="myMap"></div>
+    </div>
+</div>
 
 
-<div id="myMap"></div>
+
+
+
+
+
 
 @php
 $sampleArray = array(
@@ -80,35 +92,43 @@ $sampleArray = array(
         }
 
 
-       
+
+        var flightPlanCoordinates = [];
         var jArray = <?php echo json_encode($userCoordinates); ?>;
         console.log(jArray);
         for (var i = 0; i < jArray.length; i++) {
             console.log("data:: " + jArray[i].id);
-        
+
+            flightPlanCoordinates.push({
+                    "lat": jArray[i].latitude,
+                    "lng": jArray[i].longitude,
+                }
+            );
         }
 
 
 
-        // const flightPlanCoordinates = [{
-        //         lat: 37.772,
-        //         lng: -122.214
-        //     },
-        //     {
-        //         lat: 21.291,
-        //         lng: -157.821
-        //     },
-        //     {
-        //         lat: -18.142,
-        //         lng: 178.431
-        //     },
-        //     {
-        //         lat: -27.467,
-        //         lng: 153.027
-        //     },
-        // ];
+
+
+        const flightPlanCoordinates2 = [{
+                lat: 37.772,
+                lng: -122.214
+            },
+            {
+                lat: 21.291,
+                lng: -157.821
+            },
+            {
+                lat: -18.142,
+                lng: 178.431
+            },
+            {
+                lat: -27.467,
+                lng: 153.027
+            },
+        ];
         for (var i = 0; i < flightPlanCoordinates.length; i++) {
-            console.log("data:: " + flightPlanCoordinates[i].lat);
+            console.log("flightPlanCoordinates :: " + flightPlanCoordinates[i].lat);
         }
 
         const flightPath = new google.maps.Polyline({
