@@ -67,11 +67,14 @@
         for (var i = 0; i < jArray.length; i++) {
             console.log("data:: " + jArray[i].id);
 
-            flightPlanCoordinates.push({
-                    "lat": jArray[i].latitude,
-                    "lng": jArray[i].longitude,
-                }
-            );
+            if (jArray[i].accuracy<50) {
+                flightPlanCoordinates.push({
+                "lat": jArray[i].latitude,
+                "lng": jArray[i].longitude,
+            });
+            }
+
+           
         }
         // const flightPlanCoordinates2 = [{
         //         lat: 37.772,
