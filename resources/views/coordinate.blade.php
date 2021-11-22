@@ -34,7 +34,7 @@
                     <td>{{$coordinate->longitude}}</td>
                     <td>{{$coordinate->speed}}</td>
                     <td>{{$coordinate->accuracy}}</td>
-                    <td>{{$coordinate->time_stamps}}, {{ date('Y-m-d, h:i:s a', $coordinate->time_stamps) }}</td>
+                    <td>{{$coordinate->time_stamps}}, {{ date('Y-m-d, h:i:s a', $coordinate->time_stamps/1000) }}</td>
                     <td>{{$coordinate->created_at}}</td>
                 </tr>
                 @endforeach
