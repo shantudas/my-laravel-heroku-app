@@ -34,7 +34,7 @@
                     <td>{{$coordinate->longitude}}</td>
                     <td>{{$coordinate->speed}}</td>
                     <td>{{$coordinate->accuracy}}</td>
-                    <td>{{$coordinate->time_stamps}}, {{ Carbon\Carbon::createFromTimestamp($coordinate->time_stamps)->toDateTimeString() }}</td>
+                    <td>{{$coordinate->time_stamps}}, {{ date('Y-m-d, h:i:s a', $coordinate->time_stamps) }}</td>
                     <td>{{$coordinate->created_at}}</td>
                 </tr>
                 @endforeach
@@ -47,31 +47,11 @@
     </div>
 </div>
 
-
-
-
-
-
-
-
-@php
-$sampleArray = array(
-0 => "Geeks",
-1 => "for",
-2 => "Geeks",
-)
-@endphp
-
 @endsection
 
 @push('scriptsEnd')
 <script type="text/javascript">
     function myMap() {
-        // var mapProp = {
-        //     center: new google.maps.LatLng(51.508742, -0.120850),
-        //     zoom: 5,
-        // };
-        // var map = new google.maps.Map(document.getElementById("myMap"), mapProp);
         const map = new google.maps.Map(document.getElementById("myMap"), {
             zoom: 12,
             center: {
@@ -80,18 +60,6 @@ $sampleArray = array(
             },
             mapTypeId: "terrain",
         });
-
-
-
-        var passedArray =
-            <?php echo json_encode($sampleArray); ?>;
-
-        // Display the array elements
-        for (var i = 0; i < passedArray.length; i++) {
-            console.log("data:: " + passedArray[i]);
-        }
-
-
 
         var flightPlanCoordinates = [];
         var jArray = <?php echo json_encode($userCoordinates); ?>;
