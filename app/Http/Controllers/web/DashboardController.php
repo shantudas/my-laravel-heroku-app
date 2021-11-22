@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\UserCoordinate;
 use App\UserOnlineTrack;
+use App\WorkerInfo;
 
 class DashboardController extends Controller
 {
@@ -18,7 +19,14 @@ class DashboardController extends Controller
     public function index()
     {
         $users = User::get();
-        return view('dashboard')->with('users', $users);
+        $workersInfo=WorkerInfo::paginate(10);
+        return view('dashboard')->with(
+            [
+                'workers'=>$workersInfo,
+                'users'=> $users
+            ]
+          
+        );
     }
 
     /**

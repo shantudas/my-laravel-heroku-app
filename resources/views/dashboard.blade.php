@@ -30,5 +30,39 @@
         </tr>
         @endforeach
     </tbody>
-</table>
-@endsection
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">type</th>
+                <th scope="col">created at</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($workers as $worker)
+            <tr>
+                <td>{{$worker->id}}</td>
+
+                <td>
+                    @switch($worker->type)
+                    @case(1)
+                        From Offline Button click
+                    @break
+                    @case(2)
+                        From Multiple location Upload worker
+                    @break
+                    @case(3)
+                        From Offline worker
+                    @break
+                    @endswitch
+                </td>
+
+                <td>{{$worker->created_at}}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+    {{$workers->links()}}
+    @endsection
