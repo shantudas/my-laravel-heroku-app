@@ -31,6 +31,8 @@ Route::group(['middleware' => ['auth.jwt']], function () {
     Route::get('user/locations', 'LocationController@index');
     Route::post('user/locations', 'LocationController@store');
     Route::post('user/store-locations', 'LocationController@storeLocations'); //multiple location update
+
+    Route::post('user/store-offline-worker', 'LocationController@storeOfflineWorker');
    
 });
 

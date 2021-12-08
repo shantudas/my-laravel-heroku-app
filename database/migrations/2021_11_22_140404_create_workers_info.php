@@ -15,6 +15,7 @@ class CreateWorkersInfo extends Migration
     {
         Schema::create('workers_info', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
             $table->integer('type');
             $table->timestamps();
         });

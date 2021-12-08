@@ -59,6 +59,10 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(UserCoordinate::class);
     }
 
+    public function workers(){
+        return $this->hasMany(WorkerInfo::class);
+    }
+
 
     public function articles(){
         return $this->hasMany(Article::class);

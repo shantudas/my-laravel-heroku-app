@@ -119,4 +119,21 @@ class LocationController extends Controller
         $onlineTracks = UserCoordinate::where('user_online_track_id',$id)->get();
         return $onlineTracks;
     }
+
+    
+    public function storeOfflineWorker(Request $request){
+
+        $user=$request->user();
+    
+        $workerInfo= new WorkerInfo();
+        $workerInfo->user_id=$user->id;
+        $workerInfo->type=$request->type;
+        $workerInfo->save();
+
+        return response()->json(
+            [
+                'message' => 'worker called'
+            ]
+        );
+    }
 }

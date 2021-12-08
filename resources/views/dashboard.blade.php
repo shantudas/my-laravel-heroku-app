@@ -36,6 +36,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">type</th>
+                <th scope="col">user id</th>
                 <th scope="col">created at</th>
 
             </tr>
@@ -58,6 +59,8 @@
                     @break
                     @endswitch
                 </td>
+
+                <td>{{ $worker->user->name}}</td>
 
                 <td>{{$worker->created_at}}</td>
             </tr>
